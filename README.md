@@ -1,32 +1,53 @@
-Nessus Tarama Sonuçlarını İşleyen Python Uygulaması
-1. Uygulamanın Üretim Amacı
-•	Nessus tarama sonuçlarının büyük ve karmaşık veri setlerinden oluşması sebebiyle bu verileri işlemek zor olabilir.
-•	Gereksiz veya geçersiz verilerin manuel olarak temizlenmesi zahmetlidir.
-•	Raporlama faaliyetlerinde yarı otomatize sisteme geçiş gerekliliği.
-•	Verilerin düzgün bir şekilde filtrelenip organize edilmesi gerekir.
-•	Analiz ve arşivlemeyi kolaylaştırmak amacıyla çıktıların daha düzenli bir hale getirilmesi gerekliliği doğmuştur.
-2. Uygulamanın Çalışma Mantığı
-•	Adım 1: Nessus tarama sonuçları bir Excel dosyası (nessus.xlsx) olarak yüklenir.
-•	Adım 2: Excel dosyasındaki veriler başlıklara göre (Plugin ID, Risk, Host, Protocol, Port, Name) ayrılır.
-•	Adım 3: "None" değerine sahip risk seviyeleri filtrelenir ve geçerli verilerle yeni bir Excel dosyası (filtered_nessus.xlsx) oluşturulur.
-•	Adım 4: Filtrelenmiş veriler kullanılarak, her bir tarama sonucuna ait klasör ve bu klasörlerin içinde IP ve port bilgilerini içeren data.txt dosyaları oluşturulur.
-•	Adım 5: Her bir güvenlik açığına ait veriler ilgili klasörlerde düzenli bir şekilde saklanır.
+1. Application Production Purpose
+Nessus scan results consist of large and complex datasets, making data processing challenging.
 
-3. Uygulama Çalıştırma
-•	İlk olarak Nessus uygulaması üzerinden .csv formatında bir export alınması gerekmektedir. Rapor kısmında işaretlenmesi gereken maddeler aşağıdaki gibidir.
-•	Plugin ID
-•	Risk
-•	Host
-•	Protocol
-•	Port
-•	Name
-•	Uygulama çalıştırılmadan önce aynı dizinde nessus.xlsx adlı dosyanın içeriği yukarıdaki verileri içermelidir.
-•	Uygulama çalıştırılmadan önce pip install  openpyxl komutu çalıştırılmalıdır. 
-•	Uygulama .csv uzantılı dosyalarda hata vermektedir. Dosya içeriği .xlsx uzantılı bir dosyaya kopyalanmalıdır. 
-•	Son olarak cmd üzerinde python uygulama.py olarak dosya çalıştırılmalıdır.
+Manual cleaning of unnecessary or invalid data is labor-intensive.
 
-4. Uygulamanın Faydaları
-•	Düzenli Veri Saklama: Her bir güvenlik açığı için klasörler ve dosyalar oluşturularak, sonuçlar düzenli bir biçimde arşivlenir.
-•	Zamandan Tasarruf: Büyük verilerin manuel işlenmesine gerek kalmadan otomatik olarak işlenmesi sağlanır. Raporlama faaliyetleri için ön destek sağlanır.
-•	Hata Azaltma: Otomasyon sayesinde insan hatası minimuma indirilir.
-•	Kolay Kullanılabilirlik: Verilerin Excel ve metin dosyaları şeklinde organize edilmesi, paylaşım ve analiz açısından büyük kolaylık sunar.
+Need for transitioning to a semi-automated system for reporting activities.
+
+Requirement to properly filter and organize data.
+
+Need to structure outputs in a more organized manner to facilitate analysis and archiving.
+
+2. Application Workflow
+Step 1: Nessus scan results are loaded as an Excel file (nessus.xlsx).
+
+Step 2: Data in the Excel file is separated according to headers (Plugin ID, Risk, Host, Protocol, Port, Name).
+
+Step 3: Risk levels with "None" values are filtered out, and a new Excel file (filtered_nessus.xlsx) is created with valid data.
+
+Step 4: Using the filtered data, folders for each scan result and data.txt files containing IP and port information are created within these folders.
+
+Step 5: Data for each vulnerability is stored systematically in the relevant folders.
+
+3. Running the Application
+First, an export in .csv format must be obtained from the Nessus application. The following items should be selected in the report section:
+
+Plugin ID
+
+Risk
+
+Host
+
+Protocol
+
+Port
+
+Name
+
+Before running the application, ensure that the content of the nessus.xlsx file in the same directory contains the above data.
+
+Before running the application, execute the command: pip install openpyxl
+
+The application may produce errors with .csv files. The file content should be copied to an .xlsx file.
+
+Finally, run the file via command line with: python application.py
+
+4. Application Benefits
+Organized Data Storage: Creates folders and files for each vulnerability, archiving results in a systematic manner.
+
+Time Savings: Eliminates the need for manual processing of large datasets and provides preliminary support for reporting activities.
+
+Error Reduction: Minimizes human error through automation.
+
+Ease of Use: Organizing data in Excel and text file formats offers significant convenience for sharing and analysis.
